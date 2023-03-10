@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from main.models import Category
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    categories = Category.objects.all().order_by('name')[:3]    
+
+    return render(request,'index.html', {'categories': categories})
 
 def about(request):
     return render(request,'about.html')
