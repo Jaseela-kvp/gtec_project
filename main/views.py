@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from main.models import Category
+from main.models import Category,Product
 
 # Create your views here.
 def index(request):
-    categories = Category.objects.all().order_by('name')[:3]    
+    categories = Category.objects.all().order_by('name')   
+    products = Product.objects.all().order_by('name')   
 
     return render(request,'index.html', {'categories': categories})
 
